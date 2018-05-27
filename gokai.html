@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>誤解を招いたとすれば、言葉足らずであっtter</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+              t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+            t._e = [];
+            t.ready = function(f) {
+              t._e.push(f);
+            };
+            return t;
+          }(document, "script", "twitter-wjs"));</script>
+</head>
+
+<body>
+    <div id="app">
+        <h1>誤解を招いたとすれば、言葉足らずであっtter</h1>
+        <i>「このページの管理人から『みなさんの誤解を解きたい』という言葉があったということは事実です。<br>
+        ただ、これはパソコンの前においてイキっている時によく使う言葉で『暇つぶしに作った』という意味です。<br>
+        誤解を招いたとすれば、言葉足らずであったと心苦しく思います。」――<a href="https://twitter.com/a_ab_abc">@a_ab_abc</a></i><br>
+        <h2>作成フォーム</h2>
+        <ul>
+        <li>誰が：<input v-on:keyup="anykey" style="width: 200px" v-model="coach" placeholder="コーチ" ></li>
+        <li>何と：<input v-on:keyup="anykey" style="width: 200px" v-model="v1" placeholder="１プレー目で（相手の）ＱＢをつぶせ"></li>
+        <li>何処：<input v-on:keyup="anykey" style="width: 200px" v-model="foot" placeholder="本学フットボール部"></li>
+        <li>いつ：<input v-on:keyup="anykey" style="width: 200px" v-model="game" placeholder="ゲーム前"></li>
+        <li>真意：<input v-on:keyup="anykey" style="width: 200px" v-model="v2" placeholder="最初のプレーから思い切って当たれ"></li>
+    </ul>
+        <div><b>{{ acoach }}</b>から『<b>{{ av1 }}</b>』という言葉があったということは事実です。<br>
+        ただ、これは<b>{{ afoot }}</b>において<b>{{ agame }}</b>によく使う言葉で『<b>{{ av2 }}</b>』という意味です。<br>
+        誤解を招いたとすれば、言葉足らずであったと心苦しく思います。
+        </div>
+        <br>
+        <a :href="tweet">この内容でツイートする</a>
+    </div>
+    <script>
+            let f = function () {
+                if (this.coach == '') this.acoach = 'コーチ';
+                else this.acoach = this.coach;
+                if (this.v1 == '') this.av1 = '１プレー目で（相手の）ＱＢをつぶせ';
+                else this.av1 = this.v1;
+                if (this.foot == '') this.afoot = '本学フットボール部';
+                else this.afoot = this.foot;
+                if (this.game == '') this.agame = 'ゲーム前';
+                else this.agame = this.game;
+                if (this.v2 == '') this.av2 = '最初のプレーから思い切って当たれ';
+                else this.av2 = this.v2;
+                this.tweet = "https://twitter.com/intent/tweet?&hashtags=omoikkiri&text=" + `${this.acoach}から『${this.av1}』という言葉があったということは事実です。ただ、これは${this.afoot}において${this.agame}によく使う言葉で『${this.av2}』という意味です。誤解を招いたとすれば、言葉足らずであったと心苦しく思います。`;
+            };
+        var app5 = new Vue({
+            el: '#app',
+            data: {
+                coach: '',
+                v1: '',
+                foot: '',
+                game: '',
+                v2: '',
+
+                acoach: '',
+                av1: '',
+                afoot: '',
+                agame: '',
+                av2: '',
+                tweet: ''
+            },
+            methods: {
+                anykey: f
+            },
+            mounted: f
+        })
+    </script>
+</body>
+
+</html>
